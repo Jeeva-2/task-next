@@ -1,7 +1,11 @@
 // src/app/layout.tsx
 import './globals.css';
 
-function RootLayout({ children }) {
+interface RootLayoutProps {
+  children: React.ReactNode;
+}
+
+function RootLayout({ children }: RootLayoutProps) {
   return (
     <html>
       <body>{children}</body>

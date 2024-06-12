@@ -63,7 +63,7 @@ const handleSendMail = async (id: string) => {
   }
 };
 
-const handleExportData = async (id) => {
+const handleExportData = async (id: string) => {
   try {
     const response = await fetch(`http://localhost:3100/export_pdf?id=${id}`);
 
@@ -135,7 +135,7 @@ export default function DataTable() {
       .then((response) => response.json())
       .then((data) => {
         if (data && data.data) {
-          setRows(data.data.map((user, index) => ({ id: index + 1, ...user })));
+          setRows(data.data.map((user: any, index: number) => ({ id: index + 1, ...user })));
         }
       })
       .catch((error) => console.error('Error fetching data:', error));
@@ -143,14 +143,14 @@ export default function DataTable() {
 
 
   return (
-    <div style={{ height: '100vh', width: '100%', backgroundColor:"white" }}>
-      <DataGrid
-        rows={rows}
-        columns={columns}
-        pageSize={5}
-        checkboxSelection
-        disableSelectionOnClick
-      />
+    <div style={{ height: '100vh', width: '100%', backgroundColor: "white" }}>
+    <DataGrid
+      rows={rows}
+      columns={columns}
+      pagination
+      checkboxSelection
+      disableRowSelectionOnClick // Update property name
+    />
       <ToastContainer />
     </div>
   );
