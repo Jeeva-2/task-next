@@ -27,7 +27,7 @@ const Form = () => {
     image: ''
   });
 
-  const validateEmail = (email) => {
+const validateEmail = (email: string): string | null => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       return 'Invalid email format';
@@ -37,7 +37,7 @@ const Form = () => {
     if (!allowedDomains.includes(domain)) {
       return 'Only Aaludra, Gmail, Yahoo, and Outlook domains are allowed';
     }
-    return '';
+  return null;
   };
 
   const validateName = (name) => {
