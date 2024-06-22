@@ -90,7 +90,7 @@ const columns: GridColDef[] = [
   {
     field: 'avatar',
     headerName: 'Avatar',
-    width: 180,
+    width: 110,
     renderCell: (params) => (
       <Stack direction="row" spacing={2}>
         <StyledBadge
@@ -107,11 +107,11 @@ const columns: GridColDef[] = [
   { field: 'email', headerName: 'Email', width: 300 },
   { field: 'age', headerName: 'Age', type: 'number', width: 110 },
   { field: 'roll', headerName: 'Role', width: 160 },
-  { field: 'companyname', headerName: 'Company', width: 200 },
+  { field: 'companyname', headerName: 'Company', width: 250 },
   {
-    field: '',
-    headerName: '',
-    width: 200,
+    field: 'Action',
+    headerName: 'Action',
+    width: 150,
     renderCell: (params) => (
       <div>
         <Button onClick={() => handleSendMail(params.row._id)}>
@@ -124,7 +124,6 @@ const columns: GridColDef[] = [
     ),
   },
 ];
-
 
 export default function DataTable() {
   const [rows, setRows] = useState([]);
@@ -141,16 +140,19 @@ export default function DataTable() {
       .catch((error) => console.error('Error fetching data:', error));
   }, []);
 
-
   return (
     <div style={{ height: '100vh', width: '100%', backgroundColor: "white" }}>
-    <DataGrid
-      rows={rows}
-      columns={columns}
-      pagination
-      checkboxSelection
-      disableRowSelectionOnClick // Update property name
-    />
+      <DataGrid
+        rows={rows}
+        columns={columns}
+        pagination
+        disableRowSelectionOnClick
+        sx={{
+          '& .MuiDataGrid-menuIcon': {
+            display: 'none',
+          },
+        }}
+      />
       <ToastContainer />
     </div>
   );
