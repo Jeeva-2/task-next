@@ -162,7 +162,7 @@ const Form: React.FC = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:3100/add_user', {
+      const response = await fetch('https://chat-backend-ez0j.onrender.com/add_user', {
         method: 'POST',
         body: formDataToSend,
       });
